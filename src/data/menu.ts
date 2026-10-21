@@ -11,24 +11,24 @@ export type Variation = { label: string; price: number };
 export type Product = {
   id: string;
   name: string;
-  description?: string;
-  price?: number;
-  variations?: Variation[];
-  image?: string;
+  description?: string | undefined;
+  price?: number | undefined;
+  variations?: Variation[] | undefined;
+  image?: string | undefined;
   /** Definido pela equipe: aparece em "Mais pedidos" */
-  featured?: boolean;
+  featured?: boolean | undefined;
   /** Selo de novidade */
-  isNew?: boolean;
+  isNew?: boolean | undefined;
   /** Informação a confirmar antes da publicação */
-  needsReview?: boolean;
+  needsReview?: boolean | undefined;
 };
 
 export type Category = {
   id: string;
   name: string;
-  subtitle?: string;
+  subtitle?: string | undefined;
   /** Lista compacta, sem fotos (adicionais, molhos) */
-  compact?: boolean;
+  compact?: boolean | undefined;
   products: Product[];
 };
 
