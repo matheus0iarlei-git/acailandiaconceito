@@ -104,7 +104,7 @@ function Index() {
   );
 }
 
-function SectionTitle({ title, subtitle }: { title: string; subtitle?: string }) {
+function SectionTitle({ title, subtitle }: { title: string; subtitle?: string | undefined }) {
   return (
     <div className="mb-4">
       <div className="checker mb-3 h-2 w-24" aria-hidden />
