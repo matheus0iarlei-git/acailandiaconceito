@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Instagram, Wifi } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png.asset.json";
 import { allergens, categories, searchProducts, type Product } from "@/data/menu";
 import { BackToTop, CompactList, ProductCard, ProductDialog, SearchBar } from "@/components/menu/MenuParts";
@@ -32,37 +33,43 @@ function Index() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
-      <header className="relative px-5 pb-6 pt-8 text-center">
-        <div className="absolute inset-x-0 top-0 h-64 bg-glow" aria-hidden />
-        <img src={logo.url} alt="Açaílândia Club House — Since 2014" width={128} height={128} className="relative mx-auto h-32 w-32 drop-shadow-neon" />
-        <p className="relative mt-3 font-display text-4xl leading-none tracking-wide">
-          Açaílândia <span className="text-primary">Garage</span>
-        </p>
-        <h1 className="relative mt-3 text-lg text-muted-foreground">Seu próximo favorito está aqui.</h1>
-        <div className="relative mx-auto mt-5 max-w-xl">
+      <header className="garage-header relative px-5 pb-6 pt-7 text-center sm:pb-8 sm:pt-10">
+        <div className="relative mx-auto flex max-w-3xl items-center justify-center gap-4 sm:gap-6">
+          <img src={logo.url} alt="Açaílândia Club House — Since 2014" width={128} height={128} className="h-24 w-24 shrink-0 object-contain sm:h-32 sm:w-32" />
+          <div className="text-left">
+            <p className="mb-2 text-xs font-semibold uppercase text-muted-foreground">Club House · Since 2014</p>
+            <h1 className="font-display text-4xl leading-none text-vintage sm:text-6xl">
+              Açaílândia <span className="block italic text-primary">Garage</span>
+            </h1>
+          </div>
+        </div>
+        <p className="relative mt-5 text-base text-muted-foreground">Seu próximo favorito está aqui.</p>
+        <div className="relative mx-auto mt-4 max-w-xl">
           <SearchBar value={query} onChange={setQuery} />
         </div>
       </header>
 
       <nav className="sticky top-0 z-30 border-y border-border bg-background/90 backdrop-blur" aria-label="Categorias">
-        <div className="no-scrollbar mx-auto flex max-w-3xl gap-2 overflow-x-auto px-4 py-3">
-          {categories.map((c) => (
-            <button
+        <div className="no-scrollbar mx-auto flex max-w-5xl gap-2 overflow-x-auto px-4 py-3">
+          {categories.map((c, i) => (
+            <Button
+              variant="category"
               key={c.id}
               onClick={() => go(c.id)}
-              className="shrink-0 rounded-full border border-border px-4 py-2 text-sm font-semibold uppercase tracking-wide text-foreground transition-colors hover:border-primary hover:text-primary"
+              className="h-10 shrink-0 rounded-sm px-3 text-sm font-semibold uppercase"
             >
+              <span aria-hidden className="font-mono text-[10px] text-primary">{String(i + 1).padStart(2, "0")}</span>
               {c.name}
-            </button>
+            </Button>
           ))}
         </div>
       </nav>
 
-      <main className="mx-auto max-w-3xl px-4 pb-16">
+      <main className="mx-auto max-w-5xl px-4 pb-16 sm:px-6">
         {!query && featured.length > 0 && (
           <section className="pt-8">
             <SectionTitle title="Mais pedidos" />
-            <div className="grid gap-3 sm:grid-cols-2">
+            <div className="grid gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
               {featured.map((p) => <ProductCard key={p.id} product={p} onOpen={setOpen} />)}
             </div>
           </section>
@@ -73,12 +80,12 @@ function Index() {
         )}
 
         {results.map((c) => (
-          <section key={c.id} id={c.id} className="scroll-mt-20 pt-8">
-            <SectionTitle title={c.name} subtitle={c.subtitle} />
+          <section key={c.id} id={c.id} className="scroll-mt-20 pt-8 sm:pt-10">
+            <SectionTitle title={c.name} subtitle={c.subtitle} number={categories.findIndex((category) => category.id === c.id) + 1} />
             {c.compact ? (
               <CompactList category={c} />
             ) : (
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid gap-3 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
                 {c.products.map((p) => <ProductCard key={p.id} product={p} onOpen={setOpen} />)}
               </div>
             )}
@@ -87,7 +94,7 @@ function Index() {
       </main>
 
       <footer className="border-t border-border px-5 py-10 text-center text-sm text-muted-foreground">
-        <div className="checker mx-auto mb-6 h-3 max-w-3xl" aria-hidden />
+        <div className="checker mx-auto mb-6 h-2 w-24" aria-hidden />
         <a href="https://instagram.com/acailandiaoficial_" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-foreground hover:text-primary">
           <Instagram className="h-5 w-5" /> @acailandiaoficial_
         </a>
@@ -95,7 +102,7 @@ function Index() {
           <Wifi className="h-4 w-4 text-primary" /> Wi-Fi: <strong className="text-foreground">Açaílândia saboroso</strong>
         </p>
         <p className="mt-4">Pode conter: {allergens.join(", ")}. Consulte a equipe.</p>
-        <p className="mt-4 font-display text-lg tracking-widest text-foreground">Club House · Since 2014</p>
+        <p className="mt-4 font-display text-lg text-vintage">Club House · Since 2014</p>
       </footer>
 
       <ProductDialog product={open} onClose={() => setOpen(null)} />
@@ -104,13 +111,18 @@ function Index() {
   );
 }
 
-function SectionTitle({ title, subtitle }: { title: string; subtitle?: string | undefined }) {
+function SectionTitle({ title, subtitle, number }: { title: string; subtitle?: string | undefined; number?: number }) {
   return (
-    <div className="mb-4">
-      <div className="checker mb-3 h-2 w-24" aria-hidden />
-      <h2 className="font-display text-4xl leading-none tracking-wide">
-        {title} {subtitle && <span className="text-xl text-highlight">{subtitle}</span>}
-      </h2>
+    <div className="garage-section mb-4 flex items-center gap-3 sm:mb-5">
+      {number && <span aria-hidden className="garage-number flex h-10 w-10 shrink-0 items-center justify-center rounded-sm font-display text-2xl text-vintage">{String(number).padStart(2, "0")}</span>}
+      <div className="min-w-0">
+        <h2 className="font-display text-3xl leading-none text-vintage sm:text-4xl">{title}</h2>
+        {subtitle && <p className="mt-1 text-xs font-semibold uppercase text-muted-foreground">{subtitle}</p>}
+      </div>
+      <div className="ml-auto hidden flex-1 items-center gap-3 sm:flex" aria-hidden>
+        <div className="h-px flex-1 bg-border" />
+        <div className="checker h-2 w-8 shrink-0" />
+      </div>
     </div>
   );
 }

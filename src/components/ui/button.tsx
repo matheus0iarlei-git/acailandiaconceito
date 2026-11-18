@@ -16,6 +16,8 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        product: "menu-product border border-border bg-card text-card-foreground hover:border-primary/50",
+        category: "garage-tab border border-border bg-card text-vintage hover:border-primary/60 hover:text-foreground",
       },
       size: {
         default: "h-9 px-4 py-2",
