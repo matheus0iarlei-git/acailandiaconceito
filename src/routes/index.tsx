@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Instagram, Wifi } from "lucide-react";
+import { Instagram, Star, Wifi } from "lucide-react";
+
+const GOOGLE_REVIEW_URL = "https://www.google.com/maps/search/?api=1&query=A%C3%A7a%C3%ADl%C3%A2ndia%20Garage";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png.asset.json";
 import { allergens, categories, searchProducts, type Product } from "@/data/menu";
@@ -95,6 +97,15 @@ function Index() {
 
       <footer className="border-t border-border px-5 py-10 text-center text-sm text-muted-foreground">
         <div className="checker mx-auto mb-6 h-2 w-24" aria-hidden />
+        <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noreferrer" className="mx-auto mb-8 block max-w-sm rounded-xl border border-border bg-card p-5 shadow-garage transition hover:border-primary">
+          <p className="font-display text-2xl tracking-wide text-vintage">Curtiu o pit stop?</p>
+          <div className="my-3 flex justify-center gap-1" aria-label="5 estrelas">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <Star key={i} className="h-7 w-7 fill-highlight text-highlight" />
+            ))}
+          </div>
+          <span className="inline-flex rounded-md bg-primary px-4 py-2 font-semibold text-primary-foreground">Avalie a gente no Google</span>
+        </a>
         <a href="https://instagram.com/acailandiaoficial_" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-foreground hover:text-primary">
           <Instagram className="h-5 w-5" /> @acailandiaoficial_
         </a>
