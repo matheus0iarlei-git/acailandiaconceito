@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Instagram, Star, Wifi } from "lucide-react";
 
-const GOOGLE_REVIEW_URL = "https://www.google.com/maps/search/?api=1&query=A%C3%A7a%C3%ADl%C3%A2ndia%20Garage";
+const GOOGLE_REVIEW_URL = "https://search.google.com/local/writereview?placeid=ChIJg5oc4WJIxwcRplm5vP_ZISs";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png.asset.json";
 import { allergens, categories, searchProducts, type Product } from "@/data/menu";
@@ -97,13 +97,13 @@ function Index() {
 
       <footer className="border-t border-border px-5 py-10 text-center text-sm text-muted-foreground">
         <div className="checker mx-auto mb-6 h-2 w-24" aria-hidden />
-        <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noreferrer" className="mb-6 inline-flex flex-col items-center gap-1 text-foreground hover:text-primary">
-          <span className="flex gap-0.5" aria-hidden>
-            {[0, 1, 2, 3, 4].map((i) => <Star key={i} className="h-4 w-4 fill-highlight text-highlight" />)}
+        <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noreferrer" className="mx-auto mb-8 flex max-w-xs flex-col items-center gap-2 rounded-lg border border-border px-5 py-4 text-foreground transition-colors hover:border-primary">
+          <span className="font-display text-xl tracking-wide text-vintage">Curtiu? Avalie a gente</span>
+          <span className="flex gap-1" aria-hidden>
+            {[0, 1, 2, 3, 4].map((i) => <Star key={i} className="h-6 w-6 fill-highlight text-highlight" />)}
           </span>
-          <span className="underline underline-offset-4">Avalie no Google</span>
+          <span className="text-sm underline underline-offset-4">Deixar avaliação no Google</span>
         </a>
-        <br />
         <a href="https://instagram.com/acailandiaoficial_" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-foreground hover:text-primary">
           <Instagram className="h-5 w-5" /> @acailandiaoficial_
         </a>
