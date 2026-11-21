@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { ArrowLeft, Instagram, Star, Wifi } from "lucide-react";
+import { ArrowLeft, Bike, Instagram, Star, Wifi } from "lucide-react";
 
 const GOOGLE_REVIEW_URL = "https://search.google.com/local/writereview?placeid=ChIJg5oc4WJIxwcRplm5vP_ZISs";
+const ANOTA_AI_URL = "https://pedido.anota.ai/loja/acailandia-4";
 import { Button } from "@/components/ui/button";
 import logo from "@/assets/logo.png.asset.json";
 import { allergens, categories, searchProducts, type Product } from "@/data/menu";
@@ -100,6 +101,13 @@ function Cardapio() {
 
       <footer className="border-t border-border px-5 py-10 text-center text-sm text-muted-foreground">
         <div className="checker mx-auto mb-6 h-2 w-24" aria-hidden />
+        <a href={ANOTA_AI_URL} target="_blank" rel="noreferrer" className="mx-auto mb-8 flex max-w-xs items-center justify-center gap-3 rounded-lg border border-primary/50 bg-primary px-5 py-4 text-primary-foreground shadow-garage transition-colors hover:bg-primary/90">
+          <Bike className="h-6 w-6" />
+          <span className="text-left">
+            <span className="block font-display text-xl leading-none tracking-wide">Peça no Anota AI</span>
+            <span className="mt-0.5 block text-xs opacity-80">Delivery rápido na sua casa</span>
+          </span>
+        </a>
         <a href={GOOGLE_REVIEW_URL} target="_blank" rel="noreferrer" className="mx-auto mb-8 flex max-w-xs flex-col items-center gap-2 rounded-lg border border-border px-5 py-4 text-foreground transition-colors hover:border-primary">
           <span className="font-display text-xl tracking-wide text-vintage">Curtiu? Avalie a gente</span>
           <span className="flex gap-1" aria-hidden>
