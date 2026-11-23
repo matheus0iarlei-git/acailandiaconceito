@@ -10,8 +10,9 @@ Modernizar a apresentação do cardápio, facilitando a consulta dos produtos pe
 
 ## Acesso ao projeto
 
-**Aplicação:** https://acailand iaconceito.lovable.app
+**Cardápio Digital:** https://cardapio.pistaur.com.br/
 
+Desenvolvido pela **PISTAUR**.
 ## Desenvolvimento
 
 Projeto desenvolvido com auxílio da plataforma Lovable, com código-fonte integrado ao GitHub para versionamento e evolução contínua.
