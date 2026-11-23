@@ -1,26 +1,21 @@
-# Acailandiaconceito
+# Açaílândia Conceito — Cardápio Digital
 
-Implement exactly the screenshot and nothing else
+Projeto de desenvolvimento de um cardápio digital para a **Açaílândia Conceito**, criado pela PISTAUR.
 
-This project was built with [Lovable](https://lovable.dev).
+A solução permite que os clientes acessem o cardápio do estabelecimento de maneira digital, prática e organizada.
 
-**Live app**: https://acailandiaconceito.lovable.app
+## Objetivo
 
-## Build with Lovable
+Modernizar a apresentação do cardápio, facilitando a consulta dos produtos pelos clientes por meio de um link ou QR Code.
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/e791de1d-3cab-4490-995c-102e71ee6219).
+## Acesso ao projeto
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+**Aplicação:** https://acailand iaconceito.lovable.app
 
-## Development
+## Desenvolvimento
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+Projeto desenvolvido com auxílio da plataforma Lovable, com código-fonte integrado ao GitHub para versionamento e evolução contínua.
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
-```
+---
+
+Desenvolvido pela **PISTAUR**.
